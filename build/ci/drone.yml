@@ -1,0 +1,10 @@
+kind: pipeline
+name: build
+
+steps:
+- name: build
+  image: golang
+  commands:
+  - cd cmd
+  - go build
+  - go run jb.go
