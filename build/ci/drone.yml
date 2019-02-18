@@ -7,5 +7,4 @@ steps:
   commands:
   - dep ensure
   - cd cmd
-  - go build
-  - go run jb.go
+  - go build jb.go
