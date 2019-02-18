@@ -1,3 +1,7 @@
+workspace:
+  base: /go
+  path: src/github.com/papey/jeff-bridges
+
 kind: pipeline
 name: build
 
