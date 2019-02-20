@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 
+	internal "github.com/papey/jeff-bridges/internal/app"
+
 	"github.com/urfave/cli"
 )
 
@@ -29,7 +31,7 @@ func main() {
 			Aliases: []string{"d"},
 			Usage:   "delete a bridge",
 			Action: func(c *cli.Context) error {
-				fmt.Println("[TODO] Del Bridge")
+				internal.HandleDelbr(c)
 				return nil
 			},
 		},

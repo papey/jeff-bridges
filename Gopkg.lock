@@ -2,6 +2,24 @@
 
 
 [[projects]]
+  digest = "1:8bcbcaa78607212b57bd38f73da43069c2d7ce95fbd594da5eb2d4a742d8e91a"
+  name = "github.com/docker/libcontainer"
+  packages = [
+    "netlink",
+    "system",
+  ]
+  pruneopts = "UT"
+  revision = "5dc7ba0f24332273461e45bc49edcb4d5aa6c44c"
+  version = "v2.2.1"
+
+[[projects]]
+  digest = "1:aa5ecd7677875d9a50f7667a90c0f6b4289817f6e0dd223c9751ee08c76042d9"
+  name = "github.com/milosgajdos83/tenus"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "955dc12ecd6022db7dc161ff2fc07a2191bd98ae"
+
+[[projects]]
   digest = "1:b24d38b282bacf9791408a080f606370efa3d364e4b5fd9ba0f7b87786d3b679"
   name = "github.com/urfave/cli"
   packages = ["."]
@@ -12,6 +30,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/urfave/cli"]
+  input-imports = [
+    "github.com/milosgajdos83/tenus",
+    "github.com/urfave/cli",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

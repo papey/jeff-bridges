@@ -3,17 +3,30 @@ workspace:
   path: src/github.com/papey/jeff-bridges
 
 kind: pipeline
-name: build
+name: main
 
 steps:
-- name: dep
-  image: golang
-  commands:
-    - go get -u github.com/golang/dep/cmd/dep
-    - dep ensure
+  - name: dep
+    image: golang
+    commands:
+      - go get -u github.com/golang/dep/cmd/dep
+      - dep ensure
 
-- name: build
-  image: golang
-  commands:
-  - cd cmd
-  - go build jb.go
+  - name: build
+    image: golang
+    commands:
+      - cd cmd
+      - go build jb.go
+
+  - name: test (delete bridge)
+    image: golang
+    # interface manipulation needs more privileges
+    privileged: true
+    environment:
+      DEBIAN_FRONTEND: noninteractive
+    commands:
+      - apt-get update
+      - apt-get install -y bridge-utils
+      - brctl addbr test
+      - cd cmd
+      - go run jb.go delete test
