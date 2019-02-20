@@ -6,14 +6,14 @@ kind: pipeline
 name: build
 
 steps:
-- name: dep
-  image: golang
-  commands:
-    - go get -u github.com/golang/dep/cmd/dep
-    - dep ensure
+  - name: dep
+    image: golang
+    commands:
+      - go get -u github.com/golang/dep/cmd/dep
+      - dep ensure
 
-- name: build
-  image: golang
-  commands:
-  - cd cmd
-  - go build jb.go
+  - name: build
+    image: golang
+    commands:
+      - cd cmd
+      - go build jb.go
