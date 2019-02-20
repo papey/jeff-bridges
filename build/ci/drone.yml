@@ -17,3 +17,16 @@ steps:
     commands:
       - cd cmd
       - go build jb.go
+
+  - name: test (delete bridge)
+    image: golang
+    # interface manipulation needs more privileges
+    privileged: true
+    environment:
+      DEBIAN_FRONTEND: noninteractive
+    commands:
+      - apt-get update
+      - apt-get install -y bridge-utils
+      - brctl addbr test
+      - cd cmd
+      - go run jb.go delete test
