@@ -3,7 +3,7 @@ workspace:
   path: src/github.com/papey/jeff-bridges
 
 kind: pipeline
-name: build
+name: main
 
 steps:
   - name: dep
