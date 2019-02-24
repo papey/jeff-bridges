@@ -2,11 +2,31 @@ package internal
 
 import (
 	"errors"
+	"net"
 
 	"github.com/milosgajdos83/tenus"
 
 	"github.com/urfave/cli"
 )
+
+// HandleAddbr handles add command
+func HandleAddbr(c *cli.Context) error {
+	// check argument number
+	if c.NArg() < 2 {
+		return errors.New("Add command is missing some argument(s)")
+	}
+
+	// is base network valid ?
+	_, _, err := net.ParseCIDR(c.Args().Get(1))
+
+	// TODO:
+	// - Get all interfaces ip(s)
+	// - Check if next subnet is ok
+	// - If ok, create bridge using name
+	// - Assign IP
+
+	return err
+}
 
 // HandleDelbr handles delete command
 func HandleDelbr(c *cli.Context) error {
