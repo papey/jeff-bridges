@@ -31,8 +31,7 @@ func main() {
 			Aliases: []string{"d"},
 			Usage:   "delete a bridge",
 			Action: func(c *cli.Context) error {
-				internal.HandleDelbr(c)
-				return nil
+				return internal.HandleDelbr(c)
 			},
 		},
 	}
