@@ -2,7 +2,7 @@
 
 Multiply bridges, for fun and profit
 
-# Build
+## Build
 
 Get deps using dep
 
@@ -13,11 +13,11 @@ Build
     cd cmd
     go build jb.go
 
-# Usage
+## Usage
 
 Jeff-Bridges can add or delete bridge
 
-## Add
+### Add
 
 For example :
 
@@ -25,7 +25,7 @@ For example :
 
 Will add a new bridge name test with next available ip. In this case, ip will be 127.18.0.1 if not used by another iterface.
 
-## Delete
+### Delete
 
 For example :
 
@@ -33,10 +33,10 @@ For example :
 
 Will delete bridge named test
 
-# Licence
+## Licence
 
 See LICENCE file
 
-# Misc
+## Misc
 
 Yes, this project is build using the gitflow workflow, yes it's overkill for a small project like this but I mainly do this just for fun.
