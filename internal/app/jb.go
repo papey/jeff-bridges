@@ -6,6 +6,8 @@ import (
 
 	"github.com/milosgajdos83/tenus"
 
+	"github.com/papey/jeff-bridges/pkg/networks"
+
 	"github.com/urfave/cli"
 )
 
@@ -19,8 +21,12 @@ func HandleAddbr(c *cli.Context) error {
 	// is base network valid ?
 	_, _, err := net.ParseCIDR(c.Args().Get(1))
 
+	_, err = networks.GetAll()
+	if err != nil {
+		return err
+	}
+
 	// TODO:
-	// - Get all interfaces ip(s)
 	// - Check if next subnet is ok
 	// - If ok, create bridge using name
 	// - Assign IP
