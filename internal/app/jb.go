@@ -20,6 +20,9 @@ func HandleAddbr(c *cli.Context) error {
 
 	// is base network valid ?
 	_, _, err := net.ParseCIDR(c.Args().Get(1))
+	if err != nil {
+		return err
+	}
 
 	_, err = networks.GetAll()
 	if err != nil {
