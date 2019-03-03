@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"github.com/apparentlymart/go-cidr/cidr"
+	"github.com/milosgajdos83/tenus"
 )
 
 // GetAll function gets all ips of all interfaces on the host
@@ -26,7 +27,7 @@ func GetAll() ([]net.IP, error) {
 }
 
 // ComputeIP will return next available ip for the bridge
-func ComputeIP(ips []net.IP, network *net.IPNet) (net.IP, error) {
+func ComputeIP(ips []net.IP, network *net.IPNet) (net.IP, *net.IPNet, error) {
 
 	// get mask
 	mask := network.Mask
@@ -37,19 +38,19 @@ func ComputeIP(ips []net.IP, network *net.IPNet) (net.IP, error) {
 		// ask for next subnet of size len
 		net, exced := cidr.NextSubnet(network, len)
 		if exced != false {
-			return nil, errors.New("Can't compute new ip")
+			return nil, nil, errors.New("Can't compute new ip")
 		}
 
 		// forge ip, use 1 as host number
 		ip, err := cidr.Host(net, 1)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 
 		// check if ip is free
 		for _, i := range ips {
 			if i.String() != ip.String() {
-				return ip, nil
+				return ip, net, nil
 			}
 		}
 
@@ -90,5 +91,24 @@ func extractIfaces(ifaces []net.Interface) ([]net.IP, error) {
 	}
 
 	return ips, nil
+
+}
+
+// CreateBridge will create bridge with name and assign ip
+func CreateBridge(ip net.IP, net *net.IPNet, name string) error {
+
+	br, err := tenus.NewBridgeWithName(name)
+	if err != nil {
+		return err
+	}
+
+	err = br.SetLinkIp(ip, net)
+	if err != nil {
+		return err
+	}
+
+	err = br.SetLinkUp()
+
+	return err
 
 }

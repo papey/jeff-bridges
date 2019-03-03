@@ -29,14 +29,12 @@ func HandleAddbr(c *cli.Context) error {
 		return err
 	}
 
-	_, err = networks.ComputeIP(ips, net)
+	ip, net, err := networks.ComputeIP(ips, net)
 	if err != nil {
 		return err
 	}
 
-	// TODO:
-	// - If ok, create bridge using name
-	// - Assign IP
+	err = networks.CreateBridge(ip, net, c.Args().First())
 
 	return err
 }
