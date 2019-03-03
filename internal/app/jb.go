@@ -19,18 +19,22 @@ func HandleAddbr(c *cli.Context) error {
 	}
 
 	// is base network valid ?
-	_, _, err := net.ParseCIDR(c.Args().Get(1))
+	_, net, err := net.ParseCIDR(c.Args().Get(1))
 	if err != nil {
 		return err
 	}
 
-	_, err = networks.GetAll()
+	ips, err := networks.GetAll()
+	if err != nil {
+		return err
+	}
+
+	_, err = networks.ComputeIP(ips, net)
 	if err != nil {
 		return err
 	}
 
 	// TODO:
-	// - Check if next subnet is ok
 	// - If ok, create bridge using name
 	// - Assign IP
 

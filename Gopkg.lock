@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:1929b21a34400d463a99336f8e2908d2a154dc525c52411a8d99bb519942dc4c"
+  name = "github.com/apparentlymart/go-cidr"
+  packages = ["cidr"]
+  pruneopts = "UT"
+  revision = "b1115bf8e14a60131a196f908223e4506b0ddc35"
+  version = "v1.0.0"
+
+[[projects]]
   digest = "1:8bcbcaa78607212b57bd38f73da43069c2d7ce95fbd594da5eb2d4a742d8e91a"
   name = "github.com/docker/libcontainer"
   packages = [
@@ -31,6 +39,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/apparentlymart/go-cidr/cidr",
     "github.com/milosgajdos83/tenus",
     "github.com/urfave/cli",
   ]
