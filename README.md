@@ -36,3 +36,7 @@ Will delete bridge named test
 # Licence
 
 See LICENCE file
+
+# Misc
+
+Yes, this project is build using the gitflow workflow, yes it's overkill for a small project like this but I mainly do this just for fun.
