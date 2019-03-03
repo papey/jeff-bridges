@@ -11,4 +11,4 @@ Get deps using dep
 Build
 
     cd cmd
-    go build
+    go build jb.go
