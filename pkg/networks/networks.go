@@ -35,6 +35,10 @@ func ComputeIP(ips []net.IP, network *net.IPNet) (net.IP, *net.IPNet, error) {
 	len, _ := mask.Size()
 
 	for {
+
+		// is ip already assigned ?
+		exists := false
+
 		// ask for next subnet of size len
 		net, exced := cidr.NextSubnet(network, len)
 		if exced != false {
@@ -49,9 +53,15 @@ func ComputeIP(ips []net.IP, network *net.IPNet) (net.IP, *net.IPNet, error) {
 
 		// check if ip is free
 		for _, i := range ips {
-			if i.String() != ip.String() {
-				return ip, net, nil
+			if i.String() == ip.String() {
+				exists = true
+				network = net
+				break
 			}
+		}
+
+		if !exists {
+			return ip, net, err
 		}
 
 	}
