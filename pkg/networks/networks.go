@@ -17,6 +17,7 @@ func GetAll() ([]net.IP, error) {
 		return nil, err
 	}
 
+	// get all ips from all ifaces
 	ips, err := extractIfaces(ifaces)
 	if err != nil {
 		return nil, err
@@ -53,13 +54,17 @@ func ComputeIP(ips []net.IP, network *net.IPNet) (net.IP, *net.IPNet, error) {
 
 		// check if ip is free
 		for _, i := range ips {
+			// check if ip is already assigned to an existing interface
 			if i.String() == ip.String() {
+				// pass var to true
 				exists = true
+				// replace network by net in order to iterate over networks
 				network = net
 				break
 			}
 		}
 
+		// if not exist, it's ok !
 		if !exists {
 			return ip, net, err
 		}
@@ -107,16 +112,19 @@ func extractIfaces(ifaces []net.Interface) ([]net.IP, error) {
 // CreateBridge will create bridge with name and assign ip
 func CreateBridge(ip net.IP, net *net.IPNet, name string) error {
 
+	// create bridge with name
 	br, err := tenus.NewBridgeWithName(name)
 	if err != nil {
 		return err
 	}
 
+	// add ip
 	err = br.SetLinkIp(ip, net)
 	if err != nil {
 		return err
 	}
 
+	// set link up
 	err = br.SetLinkUp()
 
 	return err
