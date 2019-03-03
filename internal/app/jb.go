@@ -24,16 +24,19 @@ func HandleAddbr(c *cli.Context) error {
 		return err
 	}
 
+	// get all networks
 	ips, err := networks.GetAll()
 	if err != nil {
 		return err
 	}
 
+	// compute next available ip
 	ip, net, err := networks.ComputeIP(ips, net)
 	if err != nil {
 		return err
 	}
 
+	// create bridge
 	err = networks.CreateBridge(ip, net, c.Args().First())
 
 	return err
