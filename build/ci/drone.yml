@@ -30,3 +30,11 @@ steps:
       - brctl addbr test
       - cd cmd
       - go run jb.go delete test
+
+  - name: test (add bridge)
+    image: golang
+    # interface manipulation needs more privileges
+    privileged: true
+    commands:
+      - cd cmd
+      - go run jb.go add test 172.17.0.1/16

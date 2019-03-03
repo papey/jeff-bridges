@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -22,8 +21,7 @@ func main() {
 			Aliases: []string{"a"},
 			Usage:   "add a bridge",
 			Action: func(c *cli.Context) error {
-				fmt.Println("[TODO] Add Bridge")
-				return nil
+				return internal.HandleAddbr(c)
 			},
 		},
 		{
