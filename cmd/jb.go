@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
+
+	internal "github.com/papey/jeff-bridges/internal/app"
 
 	"github.com/urfave/cli"
 )
@@ -20,8 +21,7 @@ func main() {
 			Aliases: []string{"a"},
 			Usage:   "add a bridge",
 			Action: func(c *cli.Context) error {
-				fmt.Println("[TODO] Add Bridge")
-				return nil
+				return internal.HandleAddbr(c)
 			},
 		},
 		{
@@ -29,8 +29,7 @@ func main() {
 			Aliases: []string{"d"},
 			Usage:   "delete a bridge",
 			Action: func(c *cli.Context) error {
-				fmt.Println("[TODO] Del Bridge")
-				return nil
+				return internal.HandleDelbr(c)
 			},
 		},
 	}
