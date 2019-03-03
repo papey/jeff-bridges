@@ -32,3 +32,7 @@ For example :
     jb delete test
 
 Will delete bridge named test
+
+# Licence
+
+See LICENCE file
