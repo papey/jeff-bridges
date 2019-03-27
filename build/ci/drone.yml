@@ -9,6 +9,7 @@ steps:
   - name: build
     image: golang
     commands:
+      - go mod vendor
       - cd cmd
       - go build jb.go
 
