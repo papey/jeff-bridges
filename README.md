@@ -4,9 +4,9 @@ Multiply bridges, for fun and profit
 
 ## Build
 
-Get deps using dep
+Get deps using go mod
 
-    dep ensure
+    go mod vendor
 
 Build
 
