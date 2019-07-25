@@ -2,41 +2,59 @@
 
 Multiply bridges, for fun and profit
 
-## Build
+## Getting Started
+
+### Prerequisites
+
+- [Golang](https://golang.org)
+
+### Installing
 
 Get deps using go mod
 
-    go mod vendor
+```sh
+go mod vendor
+```
 
-Build
+then build
 
-    cd cmd
-    go build jb.go
+```sh
+cd cmd
+go build jb.go
+```
 
-## Usage
+### Usage
 
 Jeff-Bridges can add or delete bridge
 
-### Add
+#### Add
 
 For example :
 
-    jb add test 127.17.0.1/16
+```sh
+jb add test 127.17.0.1/16
+```
 
 Will add a new bridge name test with next available ip. In this case, ip will be 127.18.0.1 if not used by another iterface.
 
-### Delete
+#### Delete
 
 For example :
 
-    jb delete test
+```sh
+jb delete test
+```
 
 Will delete bridge named test
 
-## Licence
+## Authors
 
-See LICENCE file
+- **Wilfried OLLIVIER** - *Main author* - [Papey](https://github.com/papey)
 
-## Misc
+## License
 
-Yes, this project is build using the gitflow workflow, yes it's overkill for a small project like this but I mainly do this just for fun.
+[LICENSE](LICENSE) file for details
+
+## Acknowledgments
+
+- This project uses gitflow, only for learning purpose
